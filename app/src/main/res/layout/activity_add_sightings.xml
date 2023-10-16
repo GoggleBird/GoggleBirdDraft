@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AddSightings">
+
+
+    <!--Heading-->
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+        android:background="@drawable/heading_edges"
+        android:gravity="center"
+        android:text="Add Sighting"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <!--Current Location Information-->
+
+
+    <TextView
+        android:id="@+id/currentLocalInfoLabel"
+        android:layout_width="245dp"
+        android:layout_height="33dp"
+        android:background="@drawable/rounded_edges_label"
+        android:gravity="center"
+        android:text="Current Location Info"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.106" />
+
+    <TextView
+        android:id="@+id/UserLatitudeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Latitude: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentLocalInfoLabel"
+        app:layout_constraintVertical_bias="0.031" />
+
+    <TextView
+        android:id="@+id/UserLongitudeText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Longitude: "
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/currentLocalInfoLabel"
+        app:layout_constraintVertical_bias="0.076" />
+
+    <!--Species-->
+
+    <TextView
+        android:id="@+id/SpeciesLabel"
+        android:layout_width="120dp"
+        android:layout_height="33dp"
+        android:background="@drawable/rounded_edges_label"
+        android:gravity="center"
+        android:text="Species"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/UserLongitudeText"
+        app:layout_constraintVertical_bias="0.049" />
+
+    <Spinner
+        android:id="@+id/speciesSpinner"
+        android:layout_width="273dp"
+        android:layout_height="41dp"
+        android:minHeight="48dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/SpeciesLabel"
+        app:layout_constraintVertical_bias="0.035"
+        tools:ignore="SpeakableTextPresentCheck" />
+
+    <TextView
+        android:id="@+id/NumberOfBirdsLabel"
+        android:layout_width="184dp"
+        android:layout_height="33dp"
+        android:background="@drawable/rounded_edges_label"
+        android:gravity="center"
+        android:text="Number of Birds"
+        android:textColor="@color/white"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speciesSpinner"
+        app:layout_constraintVertical_bias="0.218" />
+
+    <EditText
+        android:id="@+id/edSpeciesName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Enter Species Name"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/speciesSpinner"
+        app:layout_constraintVertical_bias="0.061" />
+
+    <EditText
+        android:id="@+id/edNumBirds"
+        android:layout_width="99dp"
+        android:layout_height="46dp"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="e.g. 10"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/NumberOfBirdsLabel"
+        app:layout_constraintVertical_bias="0.042" />
+
+    <Button
+        android:id="@+id/btnDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0CBED4"
+        android:text="Date"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.166"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edNumBirds"
+        app:layout_constraintVertical_bias="0.158" />
+
+    <Button
+        android:id="@+id/btnTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#0CBED4"
+        android:text="Time"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.82"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edNumBirds"
+        app:layout_constraintVertical_bias="0.158" />
+
+    <Button
+        android:id="@+id/btnNext"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:backgroundTint="#0CBED4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnDate"
+        app:layout_constraintVertical_bias="0.173" />
+
+    <Button
+        android:id="@+id/btnShowEdSpecies"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="enter species manually"
+        android:backgroundTint="#0CBED4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.458" />
+
+    <Button
+        android:id="@+id/btnShowSpeciesSpinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Species Drop Down"
+        android:backgroundTint="#0CBED4"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.482"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.363" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

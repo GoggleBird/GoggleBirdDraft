@@ -19,6 +19,21 @@
         android:theme="@style/Theme.GoggleBird"
         tools:targetApi="31">
         <activity
+            android:name=".CommonBirds"
+            android:exported="false" />
+        <activity
+            android:name=".FullImage"
+            android:exported="false" />
+        <activity
+            android:name=".SavedSightingsPage"
+            android:exported="false" />
+        <activity
+            android:name=".ConfirmSightingsPage"
+            android:exported="false" />
+        <activity
+            android:name=".AddSightings"
+            android:exported="false" />
+        <activity
             android:name=".TopSightings"
             android:exported="false" />
         <activity

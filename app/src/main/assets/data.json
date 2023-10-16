@@ -1,0 +1,19 @@
+ [
+    {
+      "species_code": "spwgoo1",
+      "common_name": "Spur-winged Goose",
+      "scientific_name": "Plectropterus gambensis",
+      "prediction_year": 2021,
+      "region_type": "country",
+      "region_code": "AGO",
+      "region_name": "Angola",
+      "season": "year_round",
+      "start_date": 44200.083333333336,
+      "end_date": 44558.083333333336,
+      "abundance_mean": 0.0525,
+      "total_pop_percent": "NA",
+      "range_percent_occupied": 0.1137,
+      "range_total_percent": "NA",
+      "range_days_occupation": "NA"
+    }
+ ]

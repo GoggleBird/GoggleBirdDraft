@@ -47,15 +47,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
                 val itemID = item.itemId
 
-                if (itemID == R.id.bottom_home)
+                if (itemID == R.id.map)
                 {
                     openFragment(HomeFragment())
                     return true
-                } else if (itemID == R.id.bottom_about)
+                } else if (itemID == R.id.add_sighting)
                 {
                     openFragment(AboutFragment())
                     return true
-                } else if (itemID == R.id.bottom_profile)
+                } else if (itemID == R.id.profile_page)
                 {
                     openFragment(ProfileFragment())
                     return true

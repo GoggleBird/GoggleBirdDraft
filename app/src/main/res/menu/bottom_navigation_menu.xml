@@ -2,28 +2,32 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     >
     <item
-        android:id="@+id/bottom_home"
-        android:title="@string/home"
-        android:icon="@drawable/baseline_home_24"/>
-
-    <item
-        android:id="@+id/temp"
-        android:title="@string/temp"
-        android:icon="@drawable/ic_launcher_foreground"/>
-
-    <item
+        android:id="@+id/profile_page"
         android:title=""
-        android:enabled="true"/>
+        android:icon="@drawable/profile_page_icon"
+        />
 
     <item
-        android:id="@+id/bottom_profile"
-        android:title="@string/profile"
-        android:icon="@drawable/baseline_person_24"/>
+        android:id="@+id/saved_sightings"
+        android:title=""
+        android:icon="@drawable/saved_sightings"/>
 
     <item
-        android:id="@+id/bottom_about"
+        android:id="@+id/add_sighting"
+        android:title=""
+        android:enabled="true"
+        android:icon="@drawable/add_sightings_icon"/>
+
+    <item
+        android:id="@+id/map"
+        android:title=""
+        android:icon="@drawable/map_icon"/>
+
+    <!-- Challenges
+    <item
+        android:id="@+id/about"
         android:title="@string/about"
         android:icon="@drawable/baseline_info_24"/>
-
+    -->
 
 </menu>

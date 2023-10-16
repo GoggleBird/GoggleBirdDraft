@@ -18,7 +18,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:theme="@style/ThemeOverlay.AppCompat.Light"
-            android:background="#58B7F8"
+            android:background="#F45942"
             android:elevation="5dp"/>
 
         <FrameLayout
@@ -33,51 +33,51 @@
 
                 <com.google.android.material.bottomappbar.BottomAppBar
                     android:id="@+id/bottomAppBar"
-                    android:layout_width="match_parent"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
-                    android:backgroundTint="#58B7F8"
+                    android:backgroundTint="#0CBED4"
+                    android:padding="2dp"
                     app:fabCradleMargin="10dp"
                     app:fabCradleRoundedCornerRadius="40dp"
-                    android:padding="2dp"
                     app:titleTextColor="@color/white">
 
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_navigation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_marginEnd="18dp"
                         android:layout_gravity="center"
-                        android:outlineProvider="none"
-                        app:itemIconTint="@color/orange"
-                        app:itemTextColor="@color/white"
-                        app:itemRippleColor="@color/orange"
-                        android:elevation="5dp"
-                        app:itemIconSize="30dp"
-                        android:textAlignment="center"
-                        app:itemPaddingTop="0.5dp"
-                        android:paddingStart="5dp"
-                        android:paddingEnd="5dp"
-                        android:paddingTop="5dp"
-                        android:backgroundTint="@android:color/transparent"
-                        android:hapticFeedbackEnabled="true"
                         android:background="@android:color/transparent"
-                        app:labelVisibilityMode="labeled"
-                        app:menu="@menu/bottom_navigation_menu"/>
+                        android:backgroundTint="@android:color/transparent"
+                        android:elevation="5dp"
+                        android:hapticFeedbackEnabled="true"
+                        android:outlineProvider="none"
+                        android:paddingStart="-5dp"
+                        android:paddingTop="0dp"
+                        android:paddingEnd="0dp"
+                        android:textAlignment="center"
+                        app:itemIconSize="45dp"
+                        app:itemIconTint="@color/white"
+                        app:itemPaddingTop="0.5dp"
+                        app:itemRippleColor="@color/white"
+                        app:itemTextColor="@color/white"
+                        app:labelVisibilityMode="unlabeled"
+                        app:menu="@menu/bottom_navigation_menu" />
 
 
                 </com.google.android.material.bottomappbar.BottomAppBar>
 
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/fab"
-                    android:elevation="15dp"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:backgroundTint="#58B7F8"
-                    android:src="@drawable/ic_launcher_foreground"
-                    android:tint="@color/black"
+                    android:backgroundTint="#0CBED4"
+                    android:elevation="15dp"
+                    android:foregroundTint="@color/white"
+                    android:src="@drawable/add_sightings_icon"
+                    android:tint="@color/white"
                     app:layout_anchor="@id/bottomAppBar"
-                    app:maxImageSize="30dp"
+                    app:maxImageSize="45dp"
                     tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
