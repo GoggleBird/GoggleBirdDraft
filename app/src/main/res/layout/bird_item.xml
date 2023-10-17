@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <TextView
+        android:id="@+id/speciesCodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Species Code: "
+        android:textStyle="bold"/>
+
+
+    <TextView
+        android:id="@+id/commonNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Common Name: "/>
+
+
+    <TextView
+        android:id="@+id/scientificNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scientific Name: "/>
+
+    <TextView
+        android:id="@+id/predictionYearTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Prediction Year: "/>
+
+
+    <TextView
+        android:id="@+id/regionTypeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Region Type: "/>
+
+    <TextView
+        android:id="@+id/regionCodeTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Region Code: "/>
+
+
+    <TextView
+        android:id="@+id/regionNameTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Region Name: "/>
+
+
+    <TextView
+        android:id="@+id/seasonTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Season: "/>
+
+
+    <TextView
+        android:id="@+id/startDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start Date: "/>
+
+
+    <TextView
+        android:id="@+id/endDateTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="End Date: "/>
+
+
+    <TextView
+        android:id="@+id/abundanceMeanTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Abundance Mean: "/>
+
+    <TextView
+        android:id="@+id/totalPopPercentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Total Population Percent: "
+        />
+
+    <TextView
+        android:id="@+id/RangePercentOccTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Range Percent Occupied: "
+        />
+
+    <TextView
+        android:id="@+id/RangeTotalPercentTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Range Total Percent : "
+        />
+
+    <TextView
+        android:id="@+id/RangeDaysOccTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Range Percent Occupied: "
+        />
+
+
+
+</LinearLayout>

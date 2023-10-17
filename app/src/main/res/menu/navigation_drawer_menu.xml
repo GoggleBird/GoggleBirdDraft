@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/Recordings"
+            android:title="Recordings"
+            android:icon="@drawable/ic_launcher_foreground"/>
+
+        <item
+            android:id="@+id/TopSightings"
+            android:title="Top 100 Sightings"
+            android:icon="@drawable/ic_launcher_foreground"/>
+
+        <item
+            android:id="@+id/tempThree"
+            android:title="@string/temp"
+            android:icon="@drawable/ic_launcher_foreground"/>
+
+    </group>
+
+
+</menu>
