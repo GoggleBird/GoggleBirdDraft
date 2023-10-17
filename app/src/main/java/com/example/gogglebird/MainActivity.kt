@@ -42,6 +42,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         bottomNavigationView = findViewById(R.id.bottom_navigation)
         bottomNavigationView.background = null
 
+        // create intent for sightings
+        val toSightings = Intent(this, SavedSightingsPage::class.java)
+        val addSighting = Intent(this, AddSightings::class.java)
+
 
         bottomNavigationView.setOnItemSelectedListener(object : NavigationBarView.OnItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -50,6 +54,11 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 if (itemID == R.id.map)
                 {
                     openFragment(HomeFragment())
+                    return true
+                }
+                else if (itemID == R.id.saved_sightings)
+                {
+                    startActivity(toSightings)
                     return true
                 } else if (itemID == R.id.add_sighting)
                 {
@@ -69,7 +78,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         openFragment(HomeFragment())
 
         floatingActionButton.setOnClickListener {
-            Toast.makeText(this, "Test", Toast.LENGTH_SHORT).show()
+            startActivity(addSighting)
         }
 
     }

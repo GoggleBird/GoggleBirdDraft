@@ -5,8 +5,12 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.squareup.picasso.Picasso
+import java.text.ParseException
+import java.text.SimpleDateFormat
+import java.util.*
 
 class SightingsAdapter(
     private var sightingsList: List<Sightings>,
@@ -44,10 +48,8 @@ class SightingsAdapter(
 
         private val tvEntryName: TextView = itemView.findViewById(R.id.tvEntryName)
         private val tvSpeciesName: TextView = itemView.findViewById(R.id.tvSpecies)
-        private val tvLat: TextView = itemView.findViewById(R.id.tvCurrentLat)
-        private val tvLong: TextView = itemView.findViewById(R.id.tvCurrentLong)
-        private val tvDate: TextView = itemView.findViewById(R.id.tvDate)
-        private val tvTime: TextView = itemView.findViewById(R.id.tvTime)
+        private val tvLat: TextView = itemView.findViewById(R.id.tvCurrentLatitude)
+        private val tvLong: TextView = itemView.findViewById(R.id.tvCurrentLongitude)
         private val tvNumBirds: TextView = itemView.findViewById(R.id.tvNumBirds)
         private val tvExtraInfo: TextView = itemView.findViewById(R.id.tvExtraInfo)
 
@@ -67,10 +69,8 @@ class SightingsAdapter(
             tvSpeciesName.text = "Species: ${sighting.speciesName}"
             tvLat.text = "Location: ${sighting.currentLatitude}"
             tvLong.text = "Location: ${sighting.currentLongitude}"
-            tvDate.text = "Date: ${sighting.Date}"
-            tvTime.text = "Time: ${sighting.Time}"
             tvNumBirds.text = "Number of Birds: ${sighting.NumBirds}"
-            tvExtraInfo.text = "Number of Birds: ${sighting.extraInfo}"
+            tvExtraInfo.text = "Extra Info: ${sighting.extraInfo}"
         }
     }
 }

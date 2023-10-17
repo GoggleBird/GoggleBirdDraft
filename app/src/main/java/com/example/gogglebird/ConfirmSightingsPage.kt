@@ -91,6 +91,11 @@ class ConfirmSightingsPage : AppCompatActivity() {
         //Submit OnClickListener
         btnSaveSighting.setOnClickListener{ SaveSighting()}
 
+        btnReturn.setOnClickListener{
+
+            val intent = Intent(this, AddSightings::class.java)
+            startActivity(intent)
+        }
 
     }
 
@@ -179,6 +184,10 @@ class ConfirmSightingsPage : AppCompatActivity() {
                            extraInfo, numBirds, imagePathInsert, userId)
 
             Toast.makeText(this, "Entry saved!", Toast.LENGTH_SHORT).show()
+
+            //Redirect to saved sightings page
+            val intent = Intent(this, SavedSightingsPage::class.java)
+            startActivity(intent)
         } else {
             Toast.makeText(this, "Error! Fields cannot be left blank.", Toast.LENGTH_SHORT)
                 .show()

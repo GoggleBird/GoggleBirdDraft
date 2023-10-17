@@ -35,27 +35,6 @@
         android:layout_marginLeft="20sp"
         android:textSize="14sp" />
     <TextView
-        android:id="@+id/tvDateTimeLabel"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:text="Date and Time"
-        android:textStyle="bold"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/tvDate"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:textSize="14sp" />
-    <TextView
-        android:id="@+id/tvTime"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="20sp"
-        android:textSize="14sp" />
-
-    <TextView
         android:id="@+id/tvSpecies"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

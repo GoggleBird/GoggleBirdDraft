@@ -4,10 +4,16 @@ import android.app.DatePickerDialog
 import android.app.TimePickerDialog
 import android.content.Context
 import android.content.Intent
+import android.content.pm.PackageManager
 import android.os.Bundle
 import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.app.ActivityCompat
+import com.google.android.gms.location.LocationCallback
+import com.google.android.gms.location.LocationRequest
+import com.google.android.gms.location.LocationResult
+import com.google.android.gms.location.LocationServices
 import org.json.JSONArray
 import org.json.JSONException
 import org.json.JSONObject
@@ -40,6 +46,9 @@ class AddSightings : AppCompatActivity() {
     private lateinit var btnShowEdSpecies: Button
     private lateinit var btnShowSpeciesSpinner: Button
 
+
+    private val LOCATION_REQUEST_CODE = 0
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_add_sightings)
@@ -64,7 +73,10 @@ class AddSightings : AppCompatActivity() {
         edSpeciesName.visibility = View.INVISIBLE
         btnShowSpeciesSpinner.visibility = View.INVISIBLE
 
+        //Load onCreate
+        managePermissions()
 
+        getLocation()
         loadSpecies()
 
         //Set
@@ -80,15 +92,13 @@ class AddSightings : AppCompatActivity() {
 
         btnNext.setOnClickListener {
             val speciesSelected = speciesSpinner.visibility == View.VISIBLE
-            val species =
-                if (speciesSelected) speciesSpinner.selectedItem.toString() else edSpeciesName.text.toString()
+            val species = if (speciesSelected) speciesSpinner.selectedItem.toString() else edSpeciesName.text.toString()
 
-            // Check if required fields are filled
-            if (UserLatitudeText.text != null && UserLongitudeText.text != null &&
-                species.isNotEmpty() && edNumBirds.text != null && btnDate.text != null && btnTime.text != null
-            ) {
-
-                // Validate and parse the number of birds
+            //Check if required fields are filled
+            if (UserLatitudeText.text != "Latitude: " && UserLongitudeText.text != "Longitude: "
+                && species.isNotEmpty() && edNumBirds.text != null &&
+                btnDate.text != "Date" && btnTime.text != "Time") {
+                //Validate and parse the number of birds
                 val numBirdsText = edNumBirds.text.toString()
                 val numberOfBirds: Int? = numBirdsText.toIntOrNull()
 
@@ -96,13 +106,13 @@ class AddSightings : AppCompatActivity() {
                     edNumBirds.error = "Please enter a valid number"
                     edNumBirds.requestFocus()
                 } else {
-                    // All fields are valid, save the entries to SharedPreferences
+                    // Save the entries to SharedPreferences and move to Confirmation screen
                     saveEntriesToSharedPreferences()
                     val intent = Intent(this, ConfirmSightingsPage::class.java)
                     startActivity(intent)
                 }
             } else {
-                // Show an error message near the missing/invalid field
+                //Error message near the missing/invalid field
                 if (speciesSelected && species.isEmpty()) {
                     Toast.makeText(
                         this,
@@ -116,8 +126,39 @@ class AddSightings : AppCompatActivity() {
         }
 
 
+
     }
     //Methods
+
+    //Get current Location
+    private fun getLocation() {
+        val fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(this)
+        val locationRequest = LocationRequest.create().apply {
+            priority = LocationRequest.PRIORITY_HIGH_ACCURACY
+            interval = 10000 //Update interval in milliseconds
+        }
+
+        val locationCallback = object : LocationCallback() {
+            override fun onLocationResult(locationResult: LocationResult?) {
+                locationResult ?: return
+                for (location in locationResult.locations) {
+                    // Update UI with the current location (location.latitude, location.longitude)
+                    UserLatitudeText.text = location.latitude.toString()
+                    UserLongitudeText.text = location.longitude.toString()
+                    // If you only need one update, you can remove location updates here
+                    fusedLocationProviderClient.removeLocationUpdates(this)
+                }
+            }
+        }
+
+        try {
+            fusedLocationProviderClient.requestLocationUpdates(locationRequest, locationCallback, null)
+        } catch (e: SecurityException) {
+            e.printStackTrace()
+        }
+    }
+
+
 
     //Method to switch between edit text and spinner
     fun ShowSpinner() {
@@ -275,7 +316,56 @@ class AddSightings : AppCompatActivity() {
             editor.apply()
 
         }
-
-
     }
+
+    //Methods to handle Permissions
+    private fun managePermissions()
+    {
+        val requestPermission = mutableListOf<String>()
+        if(!isLocationPermissionGranted()){
+            //If these weren't granted
+            requestPermission.add(android.Manifest.permission.ACCESS_FINE_LOCATION)
+            requestPermission.add(android.Manifest.permission.ACCESS_COARSE_LOCATION)
+        }
+        if(requestPermission.isNotEmpty())
+        {
+            ActivityCompat.requestPermissions(this,
+                requestPermission.toTypedArray(),
+                LOCATION_REQUEST_CODE)
+        }
+    }
+    private fun isLocationPermissionGranted(): Boolean{
+        val fineLocation = ActivityCompat.checkSelfPermission(this,
+            android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+        val coarseLocation = ActivityCompat.checkSelfPermission(this,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED
+
+        return fineLocation && coarseLocation
+    }
+    override fun onRequestPermissionsResult(
+        requestCode: Int,
+        permissions: Array<out String>,
+        grantResults: IntArray
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode == LOCATION_REQUEST_CODE)
+        {
+            if(grantResults.isNotEmpty())
+            {
+                for (result in grantResults) {
+                    if (result == PackageManager.PERMISSION_GRANTED) {
+                        // Handle permission granted
+                        // You can re-initialise the map here if needed
+                        //setupMap()
+
+                    } else {
+                        Toast.makeText(this, "Permissions are granted", Toast.LENGTH_SHORT).show()
+
+                    }
+                }
+            }
+        }
+    } // method ends
+
 }

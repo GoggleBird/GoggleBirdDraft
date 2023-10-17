@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.DatabaseReference
+import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.storage.StorageReference
 import java.text.ParseException
@@ -49,6 +50,9 @@ class SavedSightingsPage : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_saved_sightings_page)
 
+        // init database
+        database =  FirebaseDatabase.getInstance().reference
+
         // Initialize variables
         tvHeading = findViewById(R.id.tvHeading)
         startDateButton = findViewById(R.id.startDateButton)
@@ -56,6 +60,13 @@ class SavedSightingsPage : AppCompatActivity() {
         filterButton = findViewById(R.id.filterButton)
         rvSavedSightings = findViewById(R.id.rvSavedSightings)
         returnBtn = findViewById(R.id.returnBtn)
+
+
+        //Return to Home Page
+        returnBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
         //Set
         startDateButton.setOnClickListener { showDatePicker(startDateListener) }

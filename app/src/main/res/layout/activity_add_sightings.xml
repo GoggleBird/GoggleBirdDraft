@@ -91,7 +91,7 @@
     <Spinner
         android:id="@+id/speciesSpinner"
         android:layout_width="273dp"
-        android:layout_height="41dp"
+        android:layout_height="48dp"
         android:minHeight="48dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -119,7 +119,7 @@
     <EditText
         android:id="@+id/edSpeciesName"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:ems="10"
         android:gravity="center"
         android:hint="Enter Species Name"
@@ -134,7 +134,7 @@
     <EditText
         android:id="@+id/edNumBirds"
         android:layout_width="99dp"
-        android:layout_height="46dp"
+        android:layout_height="48dp"
         android:ems="10"
         android:gravity="center"
         android:hint="e.g. 10"
