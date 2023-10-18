@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
@@ -62,7 +63,15 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     return true
                 } else if (itemID == R.id.add_sighting)
                 {
-                    openFragment(AboutFragment())
+                    //Alert Dialogue Box here to display a coming soon message
+                    val builder = AlertDialog.Builder(this@MainActivity)
+                    builder.setTitle("Challenges Coming Soon!")
+                    builder.setMessage("This feature will be available in a future update!")
+                    builder.setPositiveButton("OK") { dialog, _ ->
+                        dialog.dismiss()
+                    }
+                    val alert = builder.create()
+                    alert.show()
                     return true
                 } else if (itemID == R.id.profile_page)
                 {

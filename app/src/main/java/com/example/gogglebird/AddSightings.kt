@@ -102,7 +102,7 @@ class AddSightings : AppCompatActivity() {
                 val numBirdsText = edNumBirds.text.toString()
                 val numberOfBirds: Int? = numBirdsText.toIntOrNull()
 
-                if (numberOfBirds == null) {
+                if (numberOfBirds == null || numberOfBirds < 0) {
                     edNumBirds.error = "Please enter a valid number"
                     edNumBirds.requestFocus()
                 } else {
@@ -345,27 +345,26 @@ class AddSightings : AppCompatActivity() {
     }
     override fun onRequestPermissionsResult(
         requestCode: Int,
-        permissions: Array<out String>,
+        permissions: Array<String>,
         grantResults: IntArray
     ) {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
-        if(requestCode == LOCATION_REQUEST_CODE)
-        {
-            if(grantResults.isNotEmpty())
-            {
-                for (result in grantResults) {
-                    if (result == PackageManager.PERMISSION_GRANTED) {
-                        // Handle permission granted
-                        // You can re-initialise the map here if needed
-                        //setupMap()
-
-                    } else {
-                        Toast.makeText(this, "Permissions are granted", Toast.LENGTH_SHORT).show()
-
+        if (requestCode == LOCATION_REQUEST_CODE) {
+            if (permissions.isNotEmpty()) {
+                for (i in permissions.indices) {
+                    if (permissions[i] == android.Manifest.permission.ACCESS_FINE_LOCATION) {
+                        if (grantResults[i] == PackageManager.PERMISSION_GRANTED) {
+                            // Permission granted
+                            getLocation()
+                        } else if (grantResults[i] == PackageManager.PERMISSION_DENIED) {
+                            // Permission denied
+                            Toast.makeText(this, "Location permission denied", Toast.LENGTH_SHORT).show()
+                        }
                     }
                 }
             }
         }
-    } // method ends
+    }
+
 
 }
