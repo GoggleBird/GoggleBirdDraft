@@ -61,7 +61,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                 {
                     startActivity(toSightings)
                     return true
-                } else if (itemID == R.id.add_sighting)
+                } else if (itemID == R.id.challenges)
                 {
                     //Alert Dialogue Box here to display a coming soon message
                     val builder = AlertDialog.Builder(this@MainActivity)

@@ -13,15 +13,16 @@
         android:icon="@drawable/saved_sightings"/>
 
     <item
-        android:id="@+id/add_sighting"
-        android:title=""
-        android:enabled="true"
-        android:icon="@drawable/add_sightings_icon"/>
-
-    <item
         android:id="@+id/map"
         android:title=""
         android:icon="@drawable/map_icon"/>
+
+    <item
+        android:id="@+id/challenges"
+        android:title=""
+        android:enabled="true"
+        android:icon="@drawable/challenges_icon"/>
+
 
     <!-- Challenges
     <item
