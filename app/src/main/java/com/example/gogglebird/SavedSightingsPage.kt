@@ -55,9 +55,6 @@ class SavedSightingsPage : AppCompatActivity() {
 
         // Initialize variables
         tvHeading = findViewById(R.id.tvHeading)
-        startDateButton = findViewById(R.id.startDateButton)
-        endDateButton = findViewById(R.id.endDateButton)
-        filterButton = findViewById(R.id.filterButton)
         rvSavedSightings = findViewById(R.id.rvSavedSightings)
         returnBtn = findViewById(R.id.returnBtn)
 
@@ -68,10 +65,6 @@ class SavedSightingsPage : AppCompatActivity() {
             startActivity(intent)
         }
 
-        //Set
-        startDateButton.setOnClickListener { showDatePicker(startDateListener) }
-        endDateButton.setOnClickListener { showDatePicker(endDateListener) }
-
         // Get userEmail/UserId from sharedPref file
         emailSharedPreferences = getSharedPreferences("LoginEmail", Context.MODE_PRIVATE)
         userEmail = emailSharedPreferences.getString("email", "").toString()
@@ -79,42 +72,11 @@ class SavedSightingsPage : AppCompatActivity() {
         //Load Saved Sightings
         LoadSightings()
 
-        //Filter onClickListener
-        filterButton.setOnClickListener { filterSightings() }
-
     }//end OnCreate
 
 
 
     //Methods
-    //DatePicker and Listener
-    private fun showDatePicker(dateSetListener: DatePickerDialog.OnDateSetListener) {
-        val calendar = Calendar.getInstance()
-        val year = calendar.get(Calendar.YEAR)
-        val month = calendar.get(Calendar.MONTH)
-        val day = calendar.get(Calendar.DAY_OF_MONTH)
-        val datePickerDialog = DatePickerDialog(this, dateSetListener, year, month, day)
-        datePickerDialog.show()
-    }
-
-    private val startDateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, month: Int, day: Int ->
-        val selectedCalendar = Calendar.getInstance()
-        selectedCalendar.set(year, month, day)
-        selectedStartDate = selectedCalendar.time
-
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val selectedDateString = dateFormat.format(selectedStartDate!!)
-        startDateButton.text = selectedDateString
-    }
-    private val endDateListener = DatePickerDialog.OnDateSetListener { _: DatePicker, year: Int, month: Int, day: Int ->
-        val selectedCalendar = Calendar.getInstance()
-        selectedCalendar.set(year, month, day)
-        selectedEndDate = selectedCalendar.time
-
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-        val selectedDateString = dateFormat.format(selectedEndDate!!)
-        endDateButton.text = selectedDateString
-    }
 
     // Load sightings from database to RecyclerView
     private fun LoadSightings(){
@@ -155,7 +117,6 @@ class SavedSightingsPage : AppCompatActivity() {
             }
         })
     }
-
     //Click Image to open in new Activity (Fullscreen)
     fun onItemClick(sightings: Sightings) {
 
@@ -164,37 +125,4 @@ class SavedSightingsPage : AppCompatActivity() {
         intent.putExtra("imagePath", imagePath)
         startActivity(intent)
     }
-
-    private fun filterSightings() {
-        val startDateString = startDateButton.text.toString()
-        val endDateString = endDateButton.text.toString()
-
-        val dateFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-
-        var selectedStartDate: Date? = null
-        var selectedEndDate: Date? = null
-
-        try {
-            selectedStartDate = dateFormat.parse(startDateString)
-            selectedEndDate = dateFormat.parse(endDateString)
-        } catch (e: ParseException) {
-            e.printStackTrace()
-        }
-
-        // Filter the sightings entries based on the selected start and end dates and userId
-        val filteredSightings = sightingsList.filter { sightings ->
-            val entryDate = sightings.Date
-            entryDate != null && (entryDate >= selectedStartDate || selectedStartDate == null)
-                    && (entryDate <= selectedEndDate || selectedEndDate == null)
-                    && sightings.userId == userEmail
-        }
-
-        // Update the adapter with the filtered sightings entries
-        sightingsAdapter = SightingsAdapter(filteredSightings, this)
-
-        // Set RecyclerView layout manager and adapter
-        rvSavedSightings.layoutManager = LinearLayoutManager(this)
-        rvSavedSightings.adapter = sightingsAdapter
-    }
-
 }

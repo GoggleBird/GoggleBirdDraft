@@ -13,7 +13,7 @@
         android:id="@+id/tvHeading"
         android:layout_width="411dp"
         android:layout_height="50dp"
-        android:paddingBottom="5dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/heading_edges"
         android:gravity="center"
         android:text="Saved Sightings"
@@ -26,46 +26,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.0" />
-
-    <!-- Buttons for start date, end date, and filter -->
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/startDateButton"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_weight="1"
-            android:text="Start Date"
-            android:backgroundTint="#0CBED4"
-            android:textColor="@color/white"/>
-
-        <Button
-            android:id="@+id/endDateButton"
-            android:layout_width="20dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="End Date"
-            android:backgroundTint="#0CBED4"
-            android:textColor="@color/white"
-            android:layout_marginEnd="8dp" />
-
-        <Button
-            android:id="@+id/filterButton"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Filter"
-            android:backgroundTint="#0CBED4"
-            android:textColor="@color/white"/>
-
-    </LinearLayout>
-
-
     <!--RecycleView-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvSavedSightings"

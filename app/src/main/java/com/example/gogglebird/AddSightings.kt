@@ -305,7 +305,7 @@ class AddSightings : AppCompatActivity() {
         editor.putFloat("latitude", latitude.toFloat())
         editor.putFloat("longitude", longitude.toFloat())
         editor.putString("species", species)
-        editor.putInt("numberOfBirds", numberOfBirds)
+        editor.putString("numberOfBirds", numberOfBirds.toString())
 
         // Store selectedDate and selectedTime as strings
         if (selectedDate != null) {

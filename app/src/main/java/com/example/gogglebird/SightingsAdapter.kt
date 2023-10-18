@@ -50,7 +50,6 @@ class SightingsAdapter(
         private val tvSpeciesName: TextView = itemView.findViewById(R.id.tvSpecies)
         private val tvLat: TextView = itemView.findViewById(R.id.tvCurrentLatitude)
         private val tvLong: TextView = itemView.findViewById(R.id.tvCurrentLongitude)
-        private val tvNumBirds: TextView = itemView.findViewById(R.id.tvNumBirds)
         private val tvExtraInfo: TextView = itemView.findViewById(R.id.tvExtraInfo)
 
         init {
@@ -67,9 +66,8 @@ class SightingsAdapter(
 
             tvEntryName.text = "${sighting.entryName}"
             tvSpeciesName.text = "Species: ${sighting.speciesName}"
-            tvLat.text = "Location: ${sighting.currentLatitude}"
-            tvLong.text = "Location: ${sighting.currentLongitude}"
-            tvNumBirds.text = "Number of Birds: ${sighting.NumBirds}"
+            tvLat.text = "Current Latitude: ${sighting.currentLatitude}"
+            tvLong.text = "Current Longitude: ${sighting.currentLongitude}"
             tvExtraInfo.text = "Extra Info: ${sighting.extraInfo}"
         }
     }

@@ -117,7 +117,7 @@ class ConfirmSightingsPage : AppCompatActivity() {
         val species = sharedPreferences.getString("species", "")
         val date = sharedPreferences.getString("selectedDate", "")
         val time = sharedPreferences.getString("selectedTime", "")
-        val numBirds = sharedPreferences.getInt("numberOfBirds", 0).toString()
+        val numBirds = sharedPreferences.getString("numberOfBirds", "")
 
         //Set Retrieved Info to TextViews
         tvCurrentLat.text = currentLat
