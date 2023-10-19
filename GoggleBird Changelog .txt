@@ -1,0 +1,31 @@
+GoggleBird Changelog 
+----------------------
+
+-----------------------
+Changes from Design Doc
+------------------------
+
+-- Updated Graphical Components, namely: 
+	-> Basic UI layout
+	-> Application Icons
+
+-- Updated Registration Requirements
+
+-- Removed Filter from Saved Observations 
+
+-- Updated App Navigation: Added Nav Drawer, inclusive of the bottom Navbar
+	-> Nav Drawer is where all of GoggleBird's functionalities can be accessed.
+
+-- Added Feature that allows species to be entered manually in Add Sighting Page
+	-> User has the option to use the dropdown menu of stored birds as well as an edit 
+           text to enter the species manually, should it not be available on the dropdown 
+           menu.
+
+-- Seperated Date and Time entry on Add Sighting Page
+
+-- Added SMS Location feature 
+
+
+
+
+				
