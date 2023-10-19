@@ -245,7 +245,7 @@
             android:backgroundTint="#0CBED4"
             android:padding="15dp"
             android:textAlignment="center"
-            android:text="Submit changes" />
+            android:text="@string/submit_changes" />
 
 
     </LinearLayout>

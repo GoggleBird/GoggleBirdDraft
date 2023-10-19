@@ -24,7 +24,7 @@
 
     <Button
         android:id="@+id/viewHotspotsButton"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:text="@string/view_hotspots"
         android:elevation="10dp"
@@ -58,11 +58,12 @@
 
     <Button
         android:id="@+id/buttonRouting"
-        android:layout_width="120dp"
+        android:layout_width="140dp"
         android:layout_height="wrap_content"
         android:backgroundTint="#0CBED4"
         android:elevation="10dp"
         android:text="@string/route"
+        android:visibility="invisible"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.054"

@@ -8,8 +8,8 @@
         android:checkableBehavior="single">
 
         <item
-            android:id="@+id/Recordings"
-            android:title="@string/record_bird_calls"/>
+            android:id="@+id/AboutPage"
+            android:title="@string/about"/>
 
         <item
             android:id="@+id/TopSightings"

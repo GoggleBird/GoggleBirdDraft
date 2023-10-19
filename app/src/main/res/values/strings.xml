@@ -56,4 +56,9 @@
     <string name="common_birds">Common Birds</string>
     <string name="record_bird_calls">Record Bird Calls</string>
     <string name="top_100_sightings">Top 100 Sightings</string>
+    <string name="submit_changes">Submit changes</string>
+    <string name="aboutInfo">GoggleBird is a bombastic and intuitive birdwatching app designed to assist users in finding users to their desired local bird watching hotspots, while also providing directions to a selected hotspot using their current location via GPS. Users can also log and save their bird sightings on the app, which can be viewed later. GoggleBird is also home to a few additional features that make this app the perfect companion for both experienced and novice birders!</string>
+    <string name="developers">Developers:</string>
+    <string name="matthew_kidwell">Matthew Kidwell</string>
+    <string name="saiven_bisetty">Saiven Bisetty</string>
 </resources>

@@ -99,9 +99,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         val itemID = item.itemId
 
-        if (itemID == R.id.Recordings) {
-            val intentRecordings = Intent(this, Recordings::class.java)
-            startActivity(intentRecordings)
+        if (itemID == R.id.AboutPage) {
+            val intentAboutPage = Intent(this, AboutPage::class.java)
+            startActivity(intentAboutPage )
         } else if (itemID == R.id.TopSightings) {
 
             val intentTopSightings = Intent(this, TopSightings::class.java)

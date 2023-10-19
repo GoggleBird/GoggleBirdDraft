@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import org.w3c.dom.Text
 
 class Settings : AppCompatActivity() {
@@ -116,6 +117,7 @@ class Settings : AppCompatActivity() {
             distanceSet = editTextDistanceFilter.text.toString()
             editTextDistanceFilter.setText(distanceSet)
             isFirstLanding = false
+            Toast.makeText(this,"Filter changed successfully", Toast.LENGTH_SHORT).show()
         }
 
 

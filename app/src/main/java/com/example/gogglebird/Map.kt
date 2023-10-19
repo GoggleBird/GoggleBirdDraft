@@ -11,6 +11,7 @@ import android.os.Bundle
 import android.preference.PreferenceManager
 import android.telephony.SmsManager
 import android.view.MotionEvent
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
@@ -72,6 +73,12 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
         Pair("Hluhluwe iMfolozi Park", GeoPoint(-28.219831, 31.951865)),
         Pair("Umgeni River Bird Park", GeoPoint(-29.808167, 31.017467)),
         Pair("Durban Japanese Gardens", GeoPoint(-29.7999, 31.03758)),
+        Pair("Palmiet Nature Reserve", GeoPoint(-29.82173, 30.932)),
+        Pair("Durban Pigeon Valley", GeoPoint(-29.8640745, 30.9871593)),
+        Pair("KwaDukuza--Sappi Stanger hide", GeoPoint(-29.3630551, 31.3034928)),
+        Pair("Shongweni Resource Reserve", GeoPoint(-29.8572514, 30.7248692)),
+        Pair("PMB--Darvill Resources Park", GeoPoint(-29.5986914,30.4364942)),
+        Pair("Umhlanga Lagoon Nature Reserve", GeoPoint(-29.7099718,31.0949886)),
     )
 
     private val hotSpotMarkers = mutableListOf<Marker>()
@@ -112,49 +119,31 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
         setupMap()
         mMap.addMapListener(this)
 
+        // Use runOnFirstFix to execute code once the user's location is available
+        mMyLocationOverlay.runOnFirstFix{
+            // This code will be executed once the user's location is available
+            // gets the users current location
+            val geoPoint = mMyLocationOverlay.myLocation
+            latitudeUser = geoPoint.latitude
+            longitudeUser = geoPoint.longitude
+
+        }
+
         // check and request permissions
         managePermissions()
 
 
-        val animatedMarkerOverlay = object : Overlay(this) {
-
-            override fun onSingleTapConfirmed(e: MotionEvent?, mapView: MapView?): Boolean {
-
-                // Calculate the latitude and longitude from the GeoPoint
-
-                val geoPoint = mMyLocationOverlay.myLocation
-                latitudeUser = geoPoint.latitude
-                longitudeUser = geoPoint.longitude
-
-                //create a custom dialog or info window to display the latitude and longitude
-
-                val dialog = Dialog(this@Map)
-                dialog.setContentView(R.layout.custom)
-
-                val latitudeTextView = dialog.findViewById<TextView>(R.id.textViewLatitude)
-                val longitudeTextView = dialog.findViewById<TextView>(R.id.textViewLongitude)
-
-                latitudeTextView.text = "Latitude: $latitudeUser"
-                longitudeTextView.text = "Longitude: $longitudeUser"
-
-                dialog.show()
-
-                return true
-            }
-
-
-        }
-        mMap.overlays.add(animatedMarkerOverlay)
-
         // get ref to view hotspots button
         val viewHotspotsBtn = findViewById<Button>(R.id.viewHotspotsButton)
+        val showRoutesBtn = findViewById<Button>(R.id.buttonRouting)
+
 
         // add on click
         viewHotspotsBtn.setOnClickListener {
             addHotspotMarkers()
+            // displays routes btn only once hotspots are shown
+            showRoutesBtn.visibility = View.VISIBLE
         }
-
-        val showRoutesBtn = findViewById<Button>(R.id.buttonRouting)
 
         showRoutesBtn.setOnClickListener {
             calculateAndDisplayRoutes()
@@ -388,6 +377,7 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
                         //Handles permissions granted
                         //Re-initialize map if needed
                         //setupMap()
+                        mMap.invalidate()
 
                     } else {
 
@@ -450,38 +440,6 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
         val startPoint = GeoPoint(-29.8587, 31.0218)
         mapController.setCenter(startPoint)
         mapController.setZoom(6.0)
-
-        //create marker
-        val icLocationMarker = Marker(mMap)
-        icLocationMarker.position = startPoint
-        icLocationMarker.icon =
-            ResourcesCompat.getDrawable(resources, R.drawable.baseline_my_location_24, null)
-        //add marker to map view
-
-
-        //Add a click listener to the location marker
-        icLocationMarker.setOnMarkerClickListener { marker, mapView ->
-
-            val latitude = marker.position.latitude
-            val longitude = marker.position.longitude
-
-            val dialog = Dialog(this@Map)
-            dialog.setContentView(R.layout.custom)
-
-            val latitudeTextView = dialog.findViewById<TextView>(R.id.textViewLatitude)
-            val longitudeTextView = dialog.findViewById<TextView>(R.id.textViewLongitude)
-
-            latitudeTextView.text = "Latitude: $latitude"
-            longitudeTextView.text = "Longitude: $longitude"
-
-            dialog.show()
-
-            true// return true to indicate that the event is consumed
-        }
-
-
-        mMap.overlays.add(icLocationMarker)
-
 
     }
 
