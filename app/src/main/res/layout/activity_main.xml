@@ -10,8 +10,14 @@
 
     <RelativeLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/white">
+        android:layout_height="match_parent">
+
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@+id/toolbar"
+            android:layout_marginTop="-56dp" />
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -26,14 +32,16 @@
             android:layout_height="match_parent"
             android:id="@+id/fragment_container">
 
+
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:elevation="15dp">
 
+
                 <com.google.android.material.bottomappbar.BottomAppBar
                     android:id="@+id/bottomAppBar"
-                    android:layout_width="wrap_content"
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom"
                     android:backgroundTint="#0CBED4"
@@ -42,20 +50,19 @@
                     app:fabCradleRoundedCornerRadius="40dp"
                     app:titleTextColor="@color/white">
 
+
                     <com.google.android.material.bottomnavigation.BottomNavigationView
                         android:id="@+id/bottom_navigation"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:layout_gravity="center"
                         android:background="@android:color/transparent"
                         android:backgroundTint="@android:color/transparent"
                         android:elevation="5dp"
                         android:hapticFeedbackEnabled="true"
                         android:outlineProvider="none"
-                        android:paddingStart="-5dp"
+                        android:paddingStart="-70dp"
                         android:paddingTop="0dp"
-                        android:paddingEnd="0dp"
-                        android:textAlignment="center"
+                        android:paddingEnd="10dp"
                         app:itemIconSize="45dp"
                         app:itemIconTint="@color/white"
                         app:itemPaddingTop="0.5dp"
@@ -83,6 +90,30 @@
             </androidx.coordinatorlayout.widget.CoordinatorLayout>
         </FrameLayout>
     </RelativeLayout>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:gravity="center">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:gravity="center"
+            android:text="@string/hello_and_welcome_to_gogglebird"
+            android:letterSpacing="0.3"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_marginTop="80dp"
+            android:background="@drawable/settings_body"
+            android:layout_gravity="top"
+            android:elevation="30dp"
+            android:textColor="@color/white"
+            android:textSize="30sp"/>
+
+
+    </LinearLayout>
+
 
     <com.google.android.material.navigation.NavigationView
         android:layout_width="wrap_content"

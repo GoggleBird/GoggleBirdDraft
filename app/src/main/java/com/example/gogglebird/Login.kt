@@ -28,6 +28,7 @@ class Login : AppCompatActivity() {
 
     private lateinit var mAuth: FirebaseAuth
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -69,6 +70,7 @@ class Login : AppCompatActivity() {
         try {
             val email = edEmail.text.toString().trim()
             val password = edPassword.text.toString().trim()
+
 
             if (TextUtils.isEmpty(email)) {
                 Toast.makeText(this, "No email entered! Please enter an email address.", Toast.LENGTH_SHORT).show()

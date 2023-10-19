@@ -6,15 +6,33 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:padding="10dp"
     tools:context=".CommonBirds">
+
+    <!--Heading-->
+
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+        android:background="@drawable/heading_edges"
+        android:gravity="center"
+        android:text="@string/common_birds"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="382dp"
+        android:layout_height="600dp"
         android:layout_centerInParent="true"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        tools:listitem="@layout/bird_item"/>
+        tools:listitem="@layout/bird_item" />
 
 </RelativeLayout>

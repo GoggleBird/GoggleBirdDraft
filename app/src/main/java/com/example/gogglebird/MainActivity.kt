@@ -46,7 +46,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // create intent for sightings
         val toSightings = Intent(this, SavedSightingsPage::class.java)
         val addSighting = Intent(this, AddSightings::class.java)
+        val toMapview = Intent(this, Map::class.java)
 
+        val toSettings = Intent(this, Settings::class.java)
 
         bottomNavigationView.setOnItemSelectedListener(object : NavigationBarView.OnItemSelectedListener {
             override fun onNavigationItemSelected(item: MenuItem): Boolean {
@@ -54,7 +56,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
                 if (itemID == R.id.map)
                 {
-                    openFragment(HomeFragment())
+                    startActivity(toMapview)
                     return true
                 }
                 else if (itemID == R.id.saved_sightings)
@@ -75,7 +77,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     return true
                 } else if (itemID == R.id.profile_page)
                 {
-                    openFragment(ProfileFragment())
+                   // openFragment(ProfileFragment())
+                    startActivity(toSettings)
                     return true
                 }
 
@@ -84,7 +87,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         })
 
         fragmentManagerVar = supportFragmentManager
-        openFragment(HomeFragment())
+       // openFragment(HomeFragment())
+       // startActivity(toMapview)
 
         floatingActionButton.setOnClickListener {
             startActivity(addSighting)
@@ -98,14 +102,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         if (itemID == R.id.Recordings) {
             val intentRecordings = Intent(this, Recordings::class.java)
             startActivity(intentRecordings)
-            //Toast.makeText(this,"Temp One",Toast.LENGTH_SHORT).show()
         } else if (itemID == R.id.TopSightings) {
 
             val intentTopSightings = Intent(this, TopSightings::class.java)
             startActivity(intentTopSightings)
-            //Toast.makeText(this,"Temp Two",Toast.LENGTH_SHORT).show()
-        } else if (itemID == R.id.tempThree) {
-            Toast.makeText(this,"Temp Three",Toast.LENGTH_SHORT).show()
+        }else if (itemID == R.id.CommonBirds) {
+
+            val intentCommonBirds = Intent(this, CommonBirds::class.java)
+            startActivity(intentCommonBirds)
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)

@@ -9,4 +9,51 @@
     <string name="about">About</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="latitude">Latitude:</string>
+    <string name="longitude">Longitude:</string>
+    <string name="settings">SETTINGS</string>
+    <string name="max_distance">Max distance</string>
+    <string name="unit_of_measurement">Unit of measurement</string>
+    <string name="km">KM</string>
+    <string name="miles">MILES</string>
+    <string name="max_distance_label">Max distance:</string>
+
+    <string name="and">&amp;</string>
+    <string name="add_a_note">ADD A NOTE:</string>
+    <string name="save_a_note">SAVE A NOTE</string>
+    <string name="add_sighting">Add Sighting</string>
+    <string name="current_location_info">Current Location Info</string>
+    <string name="latitude_placeholder">Latitude:</string>
+    <string name="longitude_placeholder">Longitude:</string>
+    <string name="species">Species</string>
+    <string name="number_of_birds">Number of Birds</string>
+    <string name="enter_species_name">Enter Species Name</string>
+    <string name="e_g_10">e.g. 10</string>
+    <string name="date">Date</string>
+    <string name="time">Time</string>
+    <string name="next">Next</string>
+    <string name="enter_species_manually">enter species manually</string>
+    <string name="show_species_drop_down">Show Species Drop Down</string>
+    <string name="confirm_sighting">Confirm Sighting</string>
+    <string name="sighting_information">Sighting Information</string>
+    <string name="current_location_information">Current Location Information</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="no_of_birds">No. of Birds</string>
+    <string name="add_photo">Add Photo</string>
+    <string name="save_sighting">Save Sighting</string>
+    <string name="returnLabel">Return</string>
+    <string name="extra_information">Extra Information</string>
+    <string name="view_hotspots">View Hotspots</string>
+    <string name="route">Route</string>
+    <string name="send_location">Send Location</string>
+    <string name="enter_phone_number">Enter phone number</string>
+    <string name="record">Record</string>
+    <string name="record_text">Use the button below to record bird calls! These audio files will save to your device!</string>
+    <string name="hello_test">Hello, Test!</string>
+    <string name="current_distance_filter">Current distance filter:</string>
+    <string name="hello_and_welcome_to_gogglebird">Hello and Welcome to GoggleBird!</string>
+    <string name="common_birds">Common Birds</string>
+    <string name="record_bird_calls">Record Bird Calls</string>
+    <string name="top_100_sightings">Top 100 Sightings</string>
 </resources>

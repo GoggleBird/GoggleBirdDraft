@@ -9,19 +9,15 @@
 
         <item
             android:id="@+id/Recordings"
-            android:title="Recordings"
-            android:icon="@drawable/ic_launcher_foreground"/>
+            android:title="@string/record_bird_calls"/>
 
         <item
             android:id="@+id/TopSightings"
-            android:title="Top 100 Sightings"
-            android:icon="@drawable/ic_launcher_foreground"/>
+            android:title="@string/top_100_sightings"/>
 
         <item
-            android:id="@+id/tempThree"
-            android:title="@string/temp"
-            android:icon="@drawable/ic_launcher_foreground"/>
-
+            android:id="@+id/CommonBirds"
+            android:title="@string/common_birds"/>
     </group>
 
 
