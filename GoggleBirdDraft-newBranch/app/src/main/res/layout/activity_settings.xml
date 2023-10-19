@@ -1,0 +1,253 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Settings"
+    android:orientation="vertical"
+    android:background="#0CBED4">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="125dp"
+        android:background="@drawable/settings_header"
+        android:elevation="10dp">
+
+        <TextView
+            android:id="@+id/settingsTextViewTitleOne"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="15dp"
+            android:gravity="center"
+            android:letterSpacing="0.5"
+            android:text="@string/profile"
+            android:textAllCaps="true"
+            android:textColor="#F6F4F4"
+            android:textSize="30sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <TextView
+            android:id="@+id/settingsTextViewTitleTwo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="15dp"
+            android:gravity="center"
+            android:letterSpacing="0.5"
+            android:text="@string/and"
+            android:textAllCaps="true"
+            android:textColor="#F6F4F4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleOne"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+        <TextView
+            android:id="@+id/settingsTextViewTitleThree"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="15dp"
+            android:gravity="center"
+            android:letterSpacing="0.5"
+            android:text="@string/settings"
+            android:textAllCaps="true"
+            android:textColor="#F6F4F4"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleTwo"
+            app:layout_constraintVertical_bias="0.0" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <TextView
+        android:id="@+id/settingsTextViewUserEmail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:elevation="15dp"
+        android:gravity="center"
+        android:letterSpacing="0.5"
+        android:text="Hello, Test!"
+        android:textAllCaps="true"
+        android:textColor="#F6F4F4"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleOne"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="150dp"
+        android:orientation="vertical"
+        android:elevation="10dp"
+        android:background="@drawable/settings_body">
+
+        <TextView
+            android:id="@+id/textViewUnits"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:text="@string/unit_of_measurement"
+            android:textAlignment="center"
+            android:textColor="#F6F4F4"
+            android:elevation="10dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:letterSpacing="0.5"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textViewKilometers"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:text="@string/km"
+                android:textAlignment="center"
+                android:textColor="#F6F4F4"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:layout_marginStart="20dp"
+                android:background="@drawable/units_background"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:letterSpacing="0.5"
+                android:textSize="20sp"
+                android:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/textViewMiles"
+                android:layout_width="160dp"
+                android:layout_height="50dp"
+                android:text="@string/miles"
+                android:textAlignment="center"
+                android:textColor="#F6F4F4"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/units_background_unselected"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:letterSpacing="0.5"
+                android:textSize="20sp"
+                android:layout_gravity="center"/>
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_marginTop="30dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        android:layout_width="match_parent"
+        android:layout_height="270dp"
+        android:orientation="vertical"
+        android:elevation="10dp"
+        android:background="@drawable/settings_body">
+
+        <TextView
+            android:id="@+id/textViewMaxDistance"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/max_distance"
+            android:textAlignment="center"
+            android:textColor="#F6F4F4"
+            android:elevation="10dp"
+            android:textAllCaps="true"
+            android:textStyle="bold"
+            android:letterSpacing="0.5"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:layout_marginTop="10dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="10dp">
+
+            <TextView
+                android:id="@+id/textViewMaxDistanceLabel"
+                android:layout_width="200dp"
+                android:layout_height="94dp"
+                android:text="Current distance filter: "
+                android:textAlignment="center"
+                android:textColor="#F6F4F4"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:foregroundGravity="center_vertical"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/distance_label_bg"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"/>
+
+            <EditText
+                android:id="@+id/editTextMaxDistanceVal"
+                android:layout_width="match_parent"
+                android:layout_height="94dp"
+                android:textAlignment="center"
+                android:textColor="#F6F4F4"
+                android:elevation="10dp"
+                android:padding="10dp"
+                android:textIsSelectable="true"
+                android:layout_marginEnd="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/distance_bg"
+                android:textAllCaps="true"
+                android:textStyle="bold"
+                android:letterSpacing="0.2"
+                android:textSize="20sp"
+                android:layout_gravity="center"
+                android:layout_marginBottom="10dp"/>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/buttonSubmitDistanceChange"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="30dp"
+            android:layout_marginEnd="30dp"
+            android:layout_gravity="center"
+            android:backgroundTint="@color/orange"
+            android:padding="15dp"
+            android:textAlignment="center"
+            android:text="Submit changes" />
+
+
+    </LinearLayout>
+</LinearLayout>

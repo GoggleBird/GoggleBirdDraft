@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    >
+    <item
+        android:id="@+id/profile_page"
+        android:title=""
+        android:icon="@drawable/profile_page_icon"
+        />
+
+    <item
+        android:id="@+id/saved_sightings"
+        android:title=""
+        android:icon="@drawable/saved_sightings"/>
+
+    <item
+        android:id="@+id/map"
+        android:title=""
+        android:icon="@drawable/map_icon"/>
+
+    <item
+        android:id="@+id/challenges"
+        android:title=""
+        android:enabled="true"
+        android:icon="@drawable/challenges_icon"/>
+
+
+    <!-- Challenges
+    <item
+        android:id="@+id/about"
+        android:title="@string/about"
+        android:icon="@drawable/baseline_info_24"/>
+    -->
+
+</menu>

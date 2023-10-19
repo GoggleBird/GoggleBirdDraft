@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/locationNameTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:gravity="center"
+        android:textSize="16sp"
+        android:paddingTop="8sp"
+        android:paddingBottom="8sp"/>
+
+
+    <EditText
+        android:id="@+id/noteEditText"
+        android:layout_width="400sp"
+        android:layout_height="300sp"
+        android:text="ADD A NOTE:"
+        android:inputType="textMultiLine"
+        android:lines="4"/>
+
+    <Button
+        android:id="@+id/saveNoteButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="SAVE A NOTE"
+        android:backgroundTint="@color/teal_700"
+        />
+
+
+    <TextView
+        android:id="@+id/displayNoteTextView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text=""
+        android:paddingTop="8sp"
+     />
+</LinearLayout>
