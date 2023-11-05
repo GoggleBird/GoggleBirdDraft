@@ -1,9 +1,14 @@
 package com.example.gogglebird
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.MenuItem
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AlertDialog
@@ -24,9 +29,55 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     private lateinit var fragmentManagerVar: FragmentManager
     private lateinit var floatingActionButton: FloatingActionButton
 
+    private lateinit var avatarImage : ImageView
+    private lateinit var btnCustomise : Button
+
+
+    //AVATAR DISPLAY
+    // SharedPreferences for optionSelect
+    private lateinit var optionSelectSharedPreferences: SharedPreferences
+
+    //int to check which option is selected
+    private var optionSelect : Int = 0
+
+
+    //USER WELCOME
+
+    private lateinit var userEmail :String
+    private lateinit var emailSharedPreferences: SharedPreferences
+    private lateinit var userGreeting: TextView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        //AVATAR DISPLAY
+        //Typecast
+        avatarImage = findViewById(R.id.ImageUserAvatar)
+        btnCustomise = findViewById(R.id.btnCustomise)
+
+
+        // Initialize SharedPreferences
+        optionSelectSharedPreferences =
+            getSharedPreferences("OptionSelect", Context.MODE_PRIVATE)
+
+        // Load optionSelect value from SharedPreferences, or default to 0
+        optionSelect = optionSelectSharedPreferences.getInt("optionSelect", 0)
+
+
+        AvatarImageUpdater()
+
+        //USER WELCOME
+
+        //Get userEmail from sharedPref file
+        emailSharedPreferences = getSharedPreferences("LoginEmail", Context.MODE_PRIVATE)
+        userEmail = emailSharedPreferences.getString("email", "").toString()
+
+        userGreeting = findViewById(R.id.tvWelcomeHeading)
+        userGreeting.text = "Hello, $userEmail!"
+
+        btnCustomise.setOnClickListener {
+            val intent = Intent(this, AvatarCustomisation::class.java)
+            startActivity(intent) }
 
         floatingActionButton = findViewById(R.id.fab)
         val toolbar: Toolbar = findViewById(R.id.toolbar)
@@ -46,6 +97,7 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         // create intent for sightings
         val toSightings = Intent(this, SavedSightingsPage::class.java)
         val addSighting = Intent(this, AddSightings::class.java)
+        val toChallengesPage = Intent(this, ChallengesPage::class.java)
         val toMapview = Intent(this, Map::class.java)
 
         val toSettings = Intent(this, Settings::class.java)
@@ -65,19 +117,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
                     return true
                 } else if (itemID == R.id.challenges)
                 {
-                    //Alert Dialogue Box here to display a coming soon message
-                    val builder = AlertDialog.Builder(this@MainActivity)
-                    builder.setTitle("Challenges Coming Soon!")
-                    builder.setMessage("This feature will be available in a future update!")
-                    builder.setPositiveButton("OK") { dialog, _ ->
-                        dialog.dismiss()
-                    }
-                    val alert = builder.create()
-                    alert.show()
+                    startActivity(toChallengesPage)
                     return true
                 } else if (itemID == R.id.profile_page)
                 {
-                   // openFragment(ProfileFragment())
                     startActivity(toSettings)
                     return true
                 }
@@ -125,10 +168,27 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         }
     }
 
-    fun openFragment(fragment: Fragment) {
-        val transaction = supportFragmentManager.beginTransaction()
-        transaction.replace(R.id.fragment_container, fragment)
-        transaction.commit()
+    //Method to update avatar image
+    fun AvatarImageUpdater(){
+        //If option selection matches one of the following buttons
+        if (optionSelect == 0){
+            //Update Avatar image
+            avatarImage.setImageResource(R.drawable.avatar_base)
+        }
+        else if (optionSelect == 1){
+            avatarImage.setImageResource(R.drawable.avatar_cone)
+        }
+        else if (optionSelect == 2){
+            avatarImage.setImageResource(R.drawable.avatar_paper)
+        }
+        else if (optionSelect == 3){
+            avatarImage.setImageResource(R.drawable.avatar_top_hat)
+        }
+        else if (optionSelect == 4){
+            avatarImage.setImageResource(R.drawable.avatar_crown)
+        } else{
+            avatarImage.setImageResource(R.drawable.avatar_base)
+        }
     }
 
 }

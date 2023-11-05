@@ -6,6 +6,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Settings"
+    android:background="@color/white"
     android:orientation="vertical">
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -13,43 +14,6 @@
         android:layout_height="99dp"
         android:background="@drawable/settings_header"
         android:elevation="10dp">
-
-        <TextView
-            android:id="@+id/settingsTextViewTitleOne"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="15dp"
-            android:gravity="center"
-            android:letterSpacing="0.5"
-            android:text="@string/profile"
-            android:textAllCaps="true"
-            android:textColor="#F6F4F4"
-            android:textSize="20sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.2" />
-
-        <TextView
-            android:id="@+id/settingsTextViewTitleTwo"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:elevation="15dp"
-            android:gravity="center"
-            android:letterSpacing="0.5"
-            android:text="@string/and"
-            android:textAllCaps="true"
-            android:textColor="#F6F4F4"
-            android:textSize="15sp"
-            android:textStyle="bold"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleOne"
-            app:layout_constraintVertical_bias="0.0" />
-
 
         <TextView
             android:id="@+id/settingsTextViewTitleThree"
@@ -61,36 +25,17 @@
             android:text="@string/settings"
             android:textAllCaps="true"
             android:textColor="#F6F4F4"
-            android:textSize="15sp"
+            android:textSize="20sp"
             android:textStyle="bold"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleTwo"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.493" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <TextView
-        android:id="@+id/settingsTextViewUserEmail"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:elevation="15dp"
-        android:gravity="center"
-        android:letterSpacing="0.5"
-        android:text="@string/hello_test"
-        android:textAllCaps="true"
-        android:textColor="@color/black"
-        android:textSize="20sp"
-        android:textStyle="bold"
-        android:layout_gravity="center"
-        android:layout_marginTop="30dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/settingsTextViewTitleOne"
-        app:layout_constraintVertical_bias="0.0" />
 
     <LinearLayout
         android:layout_marginTop="30dp"
@@ -248,5 +193,18 @@
             android:text="@string/submit_changes" />
 
 
+
     </LinearLayout>
+
+    <Button
+
+        android:id="@+id/returnBtn"
+        android:layout_width="222dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#0CBED4"
+        android:layout_gravity="center"
+        android:layout_marginTop="30dp"
+        android:text="Return to Home Page"
+        android:textColor="@color/white"/>/>
+
 </LinearLayout>

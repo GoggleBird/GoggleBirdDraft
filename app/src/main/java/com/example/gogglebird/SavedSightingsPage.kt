@@ -25,9 +25,6 @@ import java.util.*
 class SavedSightingsPage : AppCompatActivity() {
     // Declare variables
     private lateinit var tvHeading: TextView
-    private lateinit var startDateButton: Button
-    private lateinit var endDateButton: Button
-    private lateinit var filterButton: Button
 
     private lateinit var rvSavedSightings: RecyclerView
     private lateinit var sightingsAdapter: SightingsAdapter
@@ -38,10 +35,6 @@ class SavedSightingsPage : AppCompatActivity() {
 
     private lateinit var database: DatabaseReference
     private var storageRef: StorageReference? = null
-
-    //DatePicker variables
-    private var selectedStartDate: Date? = null
-    private var selectedEndDate: Date? = null
 
     private lateinit var userEmail: String
     private lateinit var emailSharedPreferences: SharedPreferences

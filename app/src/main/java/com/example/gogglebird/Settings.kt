@@ -1,6 +1,7 @@
 package com.example.gogglebird
 
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -14,9 +15,9 @@ class Settings : AppCompatActivity() {
 
     private lateinit var textViewKM: TextView
     private lateinit var textViewMiles: TextView
-    private lateinit var userGreeting: TextView
     private lateinit var editTextDistanceFilter: EditText
     private lateinit var btnSubmitChange: Button
+    private lateinit var returnBtn: Button
 
     companion object {
         var unitSelected: String = "km"
@@ -29,9 +30,6 @@ class Settings : AppCompatActivity() {
     private var mileConversionFactor: Double = 0.621371
     private var kmConversionFactor: Double = 1.60934
 
-    private lateinit var userEmail :String
-    private lateinit var emailSharedPreferences: SharedPreferences
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_settings)
@@ -40,13 +38,14 @@ class Settings : AppCompatActivity() {
         textViewMiles = findViewById(R.id.textViewMiles)
         editTextDistanceFilter = findViewById(R.id.editTextMaxDistanceVal)
         btnSubmitChange = findViewById(R.id.buttonSubmitDistanceChange)
+        returnBtn = findViewById(R.id.returnBtn)
 
-        //Get userEmail from sharedPref file
-        emailSharedPreferences = getSharedPreferences("LoginEmail", Context.MODE_PRIVATE)
-        userEmail = emailSharedPreferences.getString("email", "").toString()
 
-        userGreeting = findViewById(R.id.settingsTextViewUserEmail)
-        userGreeting.text = "Hello, $userEmail!"
+        //Return to Home Page
+        returnBtn.setOnClickListener {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
 
 
 

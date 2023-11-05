@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".ChallengesPage">
+
+    <!--Heading-->
+    <TextView
+        android:id="@+id/tvHeading"
+        android:layout_width="411dp"
+        android:layout_height="50dp"
+        android:background="@drawable/heading_edges"
+        android:gravity="center"
+        android:text="@string/challenges"
+        android:textColor="@color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+
+    <TextView
+        android:id="@+id/tvInstructions"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Press a challenge to view its requirements"
+        android:textSize="18dp"
+        android:textColor="@color/black"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.033" />
+
+    <!--Challenges-->
+    <ImageView
+        android:id="@+id/ChallengeOneImage"
+        android:layout_width="362dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.117"
+        app:srcCompat="@drawable/challenge_one_base" />
+
+    <ImageView
+        android:id="@+id/ChallengeTwoImage"
+        android:layout_width="362dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.317"
+        app:srcCompat="@drawable/challenge_two_base" />
+
+    <ImageView
+        android:id="@+id/ChallengeThreeImage"
+        android:layout_width="362dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.517"
+        app:srcCompat="@drawable/challenge_three_base" />
+
+    <ImageView
+        android:id="@+id/ChallengeFourImage"
+        android:layout_width="362dp"
+        android:layout_height="92dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.489"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvHeading"
+        app:layout_constraintVertical_bias="0.707"
+        app:srcCompat="@drawable/challenge_four_base" />
+
+    <Button
+        android:id="@+id/returnBtn"
+        android:layout_width="222dp"
+        android:layout_height="65dp"
+        android:backgroundTint="#0CBED4"
+        android:text="Return to Home Page"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/ChallengeFourImage" />
+</androidx.constraintlayout.widget.ConstraintLayout>
