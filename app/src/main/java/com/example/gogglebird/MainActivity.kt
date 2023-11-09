@@ -153,6 +153,10 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
             val intentCommonBirds = Intent(this, CommonBirds::class.java)
             startActivity(intentCommonBirds)
+        }else if (itemID == R.id.PrivacyPolicy) {
+
+            val intentPrivacyPolicy = Intent(this, PrivacyPolicy::class.java)
+            startActivity(intentPrivacyPolicy)
         }
 
         drawerLayout.closeDrawer(GravityCompat.START)
