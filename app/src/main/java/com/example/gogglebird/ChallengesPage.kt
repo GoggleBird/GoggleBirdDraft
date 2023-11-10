@@ -206,7 +206,7 @@ class ChallengesPage : AppCompatActivity() {
         dialog.show()
     }
 
-    // Load sightings from database to RecyclerView
+    // Load sightings from database
     private fun LoadSightings(){
         sightingsList = mutableListOf()
 

@@ -2,15 +2,15 @@ package com.example.gogglebird
 
 import android.app.AlertDialog
 import android.app.Dialog
+import android.content.Context
+import android.content.SharedPreferences
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.graphics.Rect
 import android.location.GpsStatus
 import android.location.Location
 import android.os.Bundle
 import android.preference.PreferenceManager
 import android.telephony.SmsManager
-import android.view.MotionEvent
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
@@ -20,6 +20,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.res.ResourcesCompat
 import com.example.gogglebird.databinding.ActivityMapBinding
+import com.google.firebase.database.*
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
@@ -36,8 +37,6 @@ import org.osmdroid.tileprovider.tilesource.TileSourceFactory
 import org.osmdroid.util.GeoPoint
 import org.osmdroid.views.MapView
 import org.osmdroid.views.overlay.Marker
-import org.osmdroid.views.overlay.Overlay
-import org.osmdroid.views.overlay.Polyline
 import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider
 import org.osmdroid.views.overlay.mylocation.IMyLocationConsumer
 import org.osmdroid.views.overlay.mylocation.IMyLocationProvider
@@ -54,6 +53,17 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
     private lateinit var mMap: MapView
     private lateinit var controller: IMapController
     private lateinit var mMyLocationOverlay: MyLocationNewOverlay
+
+    //User Specific
+    private lateinit var userEmail: String
+    private lateinit var emailSharedPreferences: SharedPreferences
+    //List to store user's stored data
+    private lateinit var sightingsList: MutableList<Sightings>
+    val userSightingsList = mutableListOf<UserSighting>()
+
+
+
+    private lateinit var database: DatabaseReference
 
     private val LOCATION_REQUEST_CODE = 100
 
@@ -89,6 +99,15 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
+
+        //User Specific
+        // Get userEmail/UserId from sharedPref file
+        emailSharedPreferences = getSharedPreferences("LoginEmail", Context.MODE_PRIVATE)
+        userEmail = emailSharedPreferences.getString("email", "").toString()
+
+        // init database
+        database =  FirebaseDatabase.getInstance().reference
+
 
         val sendSmsButton = findViewById<Button>(R.id.sendLocationButton)
         val phoneNumEditText = findViewById<EditText>(R.id.editTextTextNumber)
@@ -141,6 +160,7 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
         // add on click
         viewHotspotsBtn.setOnClickListener {
             addHotspotMarkers()
+            LoadSightings()
             // displays routes btn only once hotspots are shown
             showRoutesBtn.visibility = View.VISIBLE
         }
@@ -171,6 +191,111 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
                     .show()
             }
         }
+    }
+
+    //Load Sightings
+    private fun LoadSightings() {
+        sightingsList = mutableListOf()
+
+        // Fetch sightings entries from the database
+        val sightingsRef = database.child("sightingsEntries")
+        sightingsRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                sightingsList.clear()
+
+                for (sightingsSnapshot in snapshot.children) {
+                    val sighting = sightingsSnapshot.getValue(Sightings::class.java)
+                    sighting?.let {
+                        sightingsList.add(it)
+                    }
+                }
+
+                // Filter the sighting entries based on the user ID
+                val userSightings = sightingsList.filter { sighting ->
+                    sighting.userId == userEmail
+                }
+                // Add user sightings to the list
+                userSightingsList.clear()
+                for (sighting in userSightings) {
+                    val userSighting = UserSighting(
+                        sighting.entryName.toString(),
+                        sighting.currentLatitude!!.toDouble(),
+                        sighting.currentLongitude!!.toDouble())
+                    userSightingsList.add(userSighting)
+                }
+
+                // Transform the user sightings list to a list of Pairs
+                val userSightingPairs = userSightingsList.map { sighting ->
+                    Pair(sighting.name, GeoPoint(sighting.latitude, sighting.longitude))
+                }
+
+
+                // Load user observation markers
+                loadUserObservationMarkers(userSightingPairs)
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Handle the error
+                Toast.makeText(
+                    this@Map,
+                    "Failed to load sightings entries: ${error.message}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
+        })
+    }
+
+    // Add this function in your Map activity
+    private fun loadUserObservationMarkers(userSightingPairs: List<Pair<String, GeoPoint>>) {
+        // Clear existing markers
+        mMap.overlays.removeAll(hotSpotMarkers)
+
+        // Load user sightings from the database
+        LoadSightings()
+
+        // Create markers for each user sighting
+        for ((name, location) in userSightingPairs) {
+            val marker = Marker(mMap)
+            marker.position = location
+            marker.setAnchor(0.5f, 1.0f)
+            marker.icon = ResourcesCompat.getDrawable(
+                resources,
+                R.drawable.user_loc_icon,
+                null
+            )
+
+            // Create a custom dialog for displaying location name and adding a note
+            marker.setOnMarkerClickListener { _, _ ->
+                val dialog = Dialog(this@Map)
+                dialog.setContentView(R.layout.custom_marker_dialog)
+
+                val noteEditText = dialog.findViewById<EditText>(R.id.noteEditText)
+                val saveNoteButton = dialog.findViewById<Button>(R.id.saveNoteButton)
+                val displayNoteTextView = dialog.findViewById<TextView>(R.id.displayNoteTextView)
+
+                // Display the location name
+                val locationNameTextView = dialog.findViewById<TextView>(R.id.locationNameTextView)
+                locationNameTextView.text = name
+
+                // Load and display the saved note for this marker
+                val savedNote = loadNote(marker.position)
+                displayNoteTextView.text = savedNote
+
+                saveNoteButton.setOnClickListener {
+                    val note = noteEditText.text.toString()
+                    savedNote(marker.position, note)
+                    displayNoteTextView.text = note
+                }
+                dialog.show()
+                true
+            }
+
+            hotSpotMarkers.add(marker)
+        }
+
+        // Add the markers to the map
+        mMap.overlays.addAll(hotSpotMarkers)
+        mMap.invalidate()
     }
 
     private fun calculateAndDisplayRoutes() {
@@ -479,3 +604,10 @@ class Map : AppCompatActivity(), IMyLocationProvider, MapListener, GpsStatus.Lis
 
 
 }
+
+//USER SIGHTINGS
+data class UserSighting(
+    val name: String,
+    val latitude: Double,
+    val longitude: Double
+)
